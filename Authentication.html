@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Authentication | Wake Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"> <!-- main CSS -->
+  <style>
+   
+    .auth-container {
+      max-width: 400px;
+      margin: 6rem auto;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .auth-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #ff6a00;
+    }
+
+    .auth-container form {
+      display: none;
+      flex-direction: column;
+    }
+
+    .auth-container form.active {
+      display: flex;
+    }
+
+    .auth-container input {
+      width: 100%;
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.5);
+      font-size: 1rem;
+    }
+
+    .auth-container button {
+      background-color: #ff6a00;
+      color: #fff;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .auth-container button:hover {
+      background-color: #e65c00;
+    }
+
+    .toggle-link {
+      margin-top: 1rem;
+      text-align: center;
+      color: #444;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .toggle-link:hover {
+      color: #ff6a00;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container">
+    <h2>Welcome to Wake Up ☀️</h2>
+
+    
+    <form id="login-form" class="active">
+      <input type="text" placeholder="Username or Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+      <div class="toggle-link" onclick="toggleForm('signup')">Don't have an account? Sign up</div>
+    </form>
+
+   
+    <form id="signup-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Confirm Password" required>
+      <button type="submit">Create Account</button>
+      <div class="toggle-link" onclick="toggleForm('login')">Already have an account? Login</div>
+    </form>
+  </div>
+
+  <script>
+  function toggleForm(form) {
+    if (form === 'signup') {
+      document.getElementById('login-form').classList.remove('active');
+      document.getElementById('signup-form').classList.add('active');
+    } else {
+      document.getElementById('signup-form').classList.remove('active');
+      document.getElementById('login-form').classList.add('active');
+    }
+  }
+
+ 
+  document.getElementById('signup-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = this.elements[0].value;
+    const email = this.elements[1].value;
+    const password = this.elements[2].value;
+    const confirmPassword = this.elements[3].value;
+
+    if (password !== confirmPassword) {
+      alert('❌ Passwords do not match!');
+      return;
+    }
+
+    
+    const user = {
+      name,
+      email,
+      password
+    };
+
+    localStorage.setItem('wakeUpUser', JSON.stringify(user));
+    alert('✅ Account created successfully! You can now log in.');
+    toggleForm('login');
+  });
+
+  
+  document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const emailOrUser = this.elements[0].value;
+    const password = this.elements[1].value;
+
+    const storedUser = JSON.parse(localStorage.getItem('wakeUpUser'));
+
+    if (
+      storedUser &&
+      (emailOrUser === storedUser.email || emailOrUser === storedUser.name) &&
+      password === storedUser.password
+    ) {
+      alert('🎉 Login successful! Redirecting...');
+      window.location.href = 'index.html'; // ✅ Change this to your main page
+    } else {
+      alert('❌ Invalid credentials. Please try again.');
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advertise Your Business</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Your Logo</div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="search.html">SEARCH</a></li>
+      <li><a href="explore.html">EXPLORE</a></li>
+      <li><a href="create.html">CREATE</a></li>
+      <li><a href="chat.html">CHAT</a></li>
+      <li><a href="advertise.html" class="active">ADVERTISE</a></li>
+    </ul>
+  </nav>
+
+  <div class="advertise-container">
+    <div class="advertise-header">
+      <h1>Advertise with Us 🚀</h1>
+      <p>Get your business noticed by our users!</p>
+    </div>
+
+    <form class="advertise-form">
+      <div class="form-group">
+        <label for="business-name">Business Name</label>
+        <input type="text" id="business-name" name="business-name" placeholder="Enter business name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contact-email">Contact Email</label>
+        <input type="email" id="contact-email" name="contact-email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="ad-description">Ad Description</label>
+        <textarea id="ad-description" name="ad-description" placeholder="Write a brief description of your ad..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="upload-image">Upload Ad Image</label>
+        <input type="file" id="upload-image" name="upload-image" accept="image/*" />
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Ad</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+    <p>&copy; 2025 Your Website Name. Built with love and creativity 💡</p>
+  </footer>
+</body>
+</html>

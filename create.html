@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Content</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Your Logo</div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="search.html">SEARCH</a></li>
+      <li><a href="explore.html">EXPLORE</a></li>
+      <li><a href="create.html" class="active">CREATE</a></li>
+      <li><a href="chat.html">CHAT</a></li>
+      <li><a href="advertise.html">ADVERTISE</a></li>
+    </ul>
+  </nav>
+
+  <div class="create-container">
+    <div class="create-header">
+      <h1>Create Your Content ✨</h1>
+      <p>Share your ideas with the world!</p>
+    </div>
+
+    <form class="create-form">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter title here" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Write a description..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="file">Upload File</label>
+        <input type="file" id="file" name="file" accept="image/*, video/*" />
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+    <p>&copy; 2025 Your Website Name. Built with love and sunlight 🌞</p>
+  </footer>
+</body>
+</html>
